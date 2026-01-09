@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, Dict
 
 #Action Data Base
 
-ACTION_DB = {
+ACTION_DB : Dict[str, List[float]] = {
 
     "pull" : [1, 0, 0],
 
@@ -21,7 +21,7 @@ class Action:
 
     #Momentary action-specific transformation
 
-    def contributeBody(self, wellness : List[float] , delta : float) -> List[int]:
+    def contributeBody(self, wellness : List[float] , delta : float) -> List[float]:
 
         wellnessBuffer = wellness.copy()
 
