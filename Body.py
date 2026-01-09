@@ -20,3 +20,8 @@ class Body():
             wellnessBuffer = action.contributeBody(wellnessBuffer, delta)
 
         return wellnessBuffer
+
+    def updateWellness(self, delta : float):
+
+        self.currentWellness = self.applyProgram(self.currentProgram, delta)
+
