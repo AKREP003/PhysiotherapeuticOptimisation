@@ -31,3 +31,13 @@ class Action:
 
         return wellnessBuffer
 
+    #dot product scaled by weight
+
+    def getAlignment(self, goal : List[float]):
+
+        buffer : float = 0
+
+        for i in range(len(goal)):
+            buffer += self.actionVector[i] * goal[i]
+
+        return buffer

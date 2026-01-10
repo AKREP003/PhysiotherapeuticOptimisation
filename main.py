@@ -8,15 +8,21 @@ testBody = Body()
 
 testBody.wellnessGoal = [5, 0, 0]
 
-pullAction = Action("pull")
+testBody.currentWellness = [0, 0, 0]
 
-pullAction.weightScalar = 1
+testBody.totalWeight = 2
 
-testBody.currentProgram = [pullAction]
+testBody.currentProgram = [Action("pull"), Action("push")]
 
-nextState = testBody.applyProgram(testBody.currentProgram, 0.5)
+testBody.reweightProgram()
 
-print(nextState)
+for i in testBody.currentProgram:
+
+    print(i.name)
+
+    print(i.weightScalar)
+
+
 
 v = Visualiser(testBody)
 
