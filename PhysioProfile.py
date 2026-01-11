@@ -10,7 +10,7 @@ import pickle
 
 class PhysioProfile:
 
-    def getProfilePath(name : str):
+    def getProfilePath(name : str) -> str:
 
         return path.join(executionFile[0], f"{name}.data")
 
@@ -26,7 +26,7 @@ class PhysioProfile:
         profilePath = PhysioProfile.getProfilePath(name)
 
         if not path.exists(profilePath):
-            super().initUserData(name)
+            PhysioProfile.initUserData(name)
 
         return pickle.load(open(profilePath, "rb"))
 
@@ -34,7 +34,10 @@ class PhysioProfile:
 
         bodyBuffer = Body(name)
 
-        super().saveBody(bodyBuffer)
+        PhysioProfile.saveBody(bodyBuffer)
 
+    def ifExists(name : str = "default") -> bool:
+        profilePath = PhysioProfile.getProfilePath(name)
 
+        return path.exists(profilePath)
 

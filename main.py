@@ -6,17 +6,24 @@ from Visualiser import Visualiser
 
 from PhysioProfile import PhysioProfile
 
-testBody = Body()
+initialise : bool = not PhysioProfile.ifExists()
 
-testBody.wellnessGoal = [5, 0, 0]
+testBody = PhysioProfile.getUserFile()
 
-testBody.currentWellness = [0, 0, 0]
+if initialise:
 
-testBody.totalWeight = 2
+    print("Initialising...")
 
-testBody.currentProgram = [Action("pull"), Action("push")]
+    testBody.wellnessGoal = [5, 0, 0]
 
-testBody.reweightProgram()
+    testBody.currentWellness = [0, 0, 0]
+
+    testBody.totalWeight = 2
+
+    testBody.currentProgram = [Action("pull"), Action("push")]
+
+    testBody.reweightProgram()
+
 
 for i in testBody.currentProgram:
 
@@ -26,10 +33,6 @@ for i in testBody.currentProgram:
 
 
 PhysioProfile.saveBody(testBody)
-
-print(PhysioProfile.getUserFile().name)
-
-print(testBody)
 
 exit()
 
