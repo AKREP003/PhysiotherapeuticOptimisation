@@ -77,8 +77,12 @@ class Visualiser:
 
         self.animInit()
 
-        self.exerciseStep()
+        while (True):
 
-        self.exerciseStep()
+            self.body.reweightProgram()
+
+            self.exerciseStep()
+
+
 
         mainloop()

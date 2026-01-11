@@ -4,6 +4,8 @@ from Action import Action
 
 from Visualiser import Visualiser
 
+from PhysioProfile import PhysioProfile
+
 testBody = Body()
 
 testBody.wellnessGoal = [5, 0, 0]
@@ -23,6 +25,13 @@ for i in testBody.currentProgram:
     print(i.weightScalar)
 
 
+PhysioProfile.saveBody(testBody)
+
+print(PhysioProfile.getUserFile().name)
+
+print(testBody)
+
+exit()
 
 v = Visualiser(testBody)
 

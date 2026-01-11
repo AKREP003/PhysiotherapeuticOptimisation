@@ -1,18 +1,23 @@
-from itertools import accumulate
 from typing import List, Dict
 
 from Action import Action
 
+from datetime import date
+
 class Body():
-    def __init__(self):
+    def __init__(self, name : str = "default"):
 
-        self.currentWellness = [0, 0, 0]
+        self.name : str = name
 
-        self.wellnessGoal = [0, 0, 0]
+        self.currentWellness : List[float] = [0, 0, 0]
+
+        self.wellnessGoal : List[float] = [0, 0, 0]
 
         self.currentProgram : List[Action]
 
-        self.totalWeight = 24
+        self.totalWeight : float = 24
+
+        self.startDate: date = date.today()
 
     def applyProgram(self, program: List[Action], delta : float) -> List[int]:
 
@@ -28,7 +33,7 @@ class Body():
 
         self.currentWellness = self.applyProgram(self.currentProgram, delta)
 
-    def getRelativeGoal(self):
+    def getRelativeGoal(self) -> List[float]:
 
         goalBuffer = self.wellnessGoal.copy()
 
@@ -56,7 +61,7 @@ class Body():
 
     def adjustPrograms(self, alignmentBuffer : Dict[str, float], weightUnit : float):
 
-        self.currentProgram = []
+        self.currentProgram : List[Action] = []
 
         for actionName, weight in alignmentBuffer.items():
 
@@ -65,4 +70,3 @@ class Body():
             actionBuffer.weightScalar = weight * weightUnit
 
             self.currentProgram.append(actionBuffer)
-
